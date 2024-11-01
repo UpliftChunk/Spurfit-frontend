@@ -9,12 +9,12 @@ import { ITEMS } from "../tempData/Basics"
 const BasicUnit= ({item, index})=>{   
    return <Draggable draggableId={item.id} index={index} key={index}>
       {
-         (provided)=>{
+         (provided, snapshot)=>{
             return <div 
                {...provided.draggableProps} 
                {...provided.dragHandleProps}
                ref= {provided.innerRef}
-               className=' w-full h-full bg-red-100'
+               className={`w-full h-full transition-all delay-300 ${snapshot.isDragging? " bg-red-200":"bg-red-100"}  `}
                >
                {item.name}
             </div>
