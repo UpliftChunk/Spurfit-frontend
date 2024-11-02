@@ -16,7 +16,7 @@ const BasicUnit= ({item, index, setItems})=>{
          return new_items;
       })
    }
-   return <div className={`transition-all delay-300 w-[30%] h-20`} onClick={addItem}>
+   return <div className={`transition-all delay-300 w-[30%] h-16 rounded-lg`} onClick={addItem}>
       <Draggable draggableId={item.id} index={index} key={index} > 
          {
             (provided, snapshot)=>{
@@ -24,9 +24,9 @@ const BasicUnit= ({item, index, setItems})=>{
                   {...provided.draggableProps} 
                   {...provided.dragHandleProps}
                   ref= {provided.innerRef}
-                  className= {`h-full ${snapshot.isDragging? " bg-red-200":"bg-red-100"} border border-black `}
+                  className= {`h-full ${snapshot.isDragging? " bg-white":"bg-gray-200"}  rounded-lg`}
                   >
-                  <BarGraph units={item.units}/>
+                  <BarGraph units={item.units} snapshot={snapshot}/>
                </div>
             }
          }
@@ -37,14 +37,15 @@ const BasicUnit= ({item, index, setItems})=>{
 const LeftSection = ({setItems}) => {
   
   return (
-    <div className='h-full flex flex-col'>
+    <div className='flex flex-col bg-white rounded-xl'>
       <div className="sm:m-2 flex flex-wrap content-center justify-center md:gap-4 gap-1"    >
-         Click or drag
+         Click or drag the blocks to build workout
       </div>
+      <hr className='border-2'/>
       <Droppable droppableId="basics" direction='horiztontal'>
          {
             (provided)=>(
-               <div className="sm:m-2 flex flex-wrap content-center justify-center md:gap-4 gap-1 min-h-40" 
+               <div className="sm:m-2 flex flex-wrap content-center justify-center md:gap-4 gap-1 min-h-40 sm:p-2" 
                   {...provided.droppableProps}
                   ref={provided.innerRef}>
                   {

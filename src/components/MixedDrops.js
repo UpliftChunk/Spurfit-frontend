@@ -5,37 +5,34 @@ import BarGraph from "./BarGraph"
 // const Container = styled.div``;
 // const Task = styled.div``;
 
-const BasicUnit= ({item, index})=>{   
-  return <div className={`transition-all delay-300 flex-grow`} >
-    <Draggable draggableId={item.id+"##"+index} index={index} key={index} > 
+const BasicUnit= ({item, index, sum})=>{   
+  return (<Draggable draggableId={item.id+"##"+index} index={index} key={index} > 
       {
           (provided, snapshot)=>{
             return <div 
-                {...provided.draggableProps} 
+                {...provided.draggableProps}
                 {...provided.dragHandleProps}
                 ref= {provided.innerRef}
-                className= {`h-full ${snapshot.isDragging? " bg-gray-200":"bg-gray-100"} border border-black `}
-                >
-                <BarGraph units={item.units}/>
+                className= {`h-full w-full `}
+              >   
+                  <BarGraph units={item.units} snapshot={snapshot}/>
             </div>
           }
       }
-    </Draggable>
-  </div>
+    </Draggable>)
 }
 
 const MixedDrops = ({items}) => {
+  const sum= items.reduce((total, item) => total + item.total, 0);
   return (
-    <div className='flex flex-col w-full h-full content-center justify-center'>
-      <div>dropable</div>
-      {/* {console.log(items)} */}
+    <div className='flex flex-col w-full h-full'>
       <Droppable droppableId="mixed" direction="horizontal">
       {
           (provided)=>
-          <div className='w-full min-h-60 flex border-2 border-blue-400 gap-1' 
+          <div className='w-full h-full flex justify-center gap-1 items-end' 
           ref={provided.innerRef} {...provided.droppableProps}>
             {
-              items.map((item, index)=> <BasicUnit item={item} index={index} key={index}/>)
+              items.map((item, index)=> <BasicUnit item={item} index={index} key={index} sum={sum}/>)
             }
             {provided.placeholder}
           </div>      

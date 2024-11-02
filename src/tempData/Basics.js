@@ -1,6 +1,6 @@
 exports.ITEMS = [
    {
-      name: "a",
+      name: "Basic",
       id: "1",
       units: [
          {x:3, y:50},
@@ -9,7 +9,7 @@ exports.ITEMS = [
       className: "bg-blue-300 border-2 border-black m-2 min-w-40 min-h-40 rounded",
    },
    {
-      name: "b",
+      name: "Warm up",
       id: "2",
       units: [
          {x:3, y:50},
@@ -19,7 +19,7 @@ exports.ITEMS = [
       className: "bg-blue-300 border-2 border-black m-2 min-w-40 min-h-40 rounded",
    },
    {
-      name: "c",
+      name: "Run",
       id: "3",
       units: [
          {x:3, y:90},
@@ -31,7 +31,7 @@ exports.ITEMS = [
       className: "bg-blue-300 border-2 border-black m-2 min-w-40 min-h-40 rounded",
    },
    {
-      name: "d",
+      name: "Cool down",
       id: "4",
       units: [
          {x:3, y:90},
@@ -41,7 +41,7 @@ exports.ITEMS = [
       className: "bg-blue-300 border-2 border-black m-2 min-w-40 min-h-40 rounded",
    },
    {
-      name: "e",
+      name: "Breathe",
       id: "5",
       units: [
          {x:4, y:90},
@@ -51,7 +51,7 @@ exports.ITEMS = [
       className: "bg-blue-300 border-2 border-black m-2 min-w-40 min-h-40 rounded",
    },
    {
-      name: "f",
+      name: "Walk",
       id: "6",
       units: [
          {x:3, y:90},

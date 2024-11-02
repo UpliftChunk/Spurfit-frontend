@@ -1,10 +1,10 @@
-// import styled from 'styled-components';
 import LeftSection from './LeftSection.js';
-import MixedDrops from './MixedDrops.js';
 import NavBar from './NavBar.js';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { useState } from 'react';
 import { ITEMS } from "../tempData/Basics" 
+import RightSection from './RightSection.js';
+
 
 const Rootlayout = () => {
    const [items, setItems] = useState([]);
@@ -38,18 +38,18 @@ const Rootlayout = () => {
       
    }
   return (
-    <div className='flex flex-col min-h-screen content-center border-2 border-b-amber-800'>
+    <div className='flex flex-col min-h-screen content-center bg-gray-200'>
       <div className='text-cyan-500 bg-black text-2xl font-semibold py-4 px-2'>
          Workouts
       </div>
       <NavBar/>
       <DragDropContext onDragEnd={OnDragEndFunc}>
-         <div className='my-2 mx-1 md:mx-10 flex flex-wrap'>
-            <div className='bg-purple-200 md:w-1/3 w-full'>
+         <div className='my-2 mx-1 md:mx-10 flex flex-wrap gap-4'>
+            <div className='md:w-1/3 w-full'>
                <LeftSection setItems={setItems}/>
             </div>
-            <div className='flex-grow flex-col content-center justify-center gap-4 border-2 border-black '>
-               <MixedDrops items={items}/>
+            <div className='flex-grow rounded-lg sm:px-2'>
+               <RightSection items={items}/>
             </div>
          </div>
       </DragDropContext>
