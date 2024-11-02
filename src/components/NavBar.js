@@ -2,7 +2,7 @@ import React from 'react'
 
 const NavBar = () => {
   return (
-   <div className='my-5 mx-1 md:mx-10 flex justify-between bg-white rounded-xl md:px-4 md:py-4'>
+   <div className='sm:my-5 mx-1 md:mx-10 flex justify-between bg-white rounded-xl md:px-4 md:py-4 p-2'>
       <div className='flex gap-2 content-center'>
          <i className="my-auto cursor-pointer fa-solid fa-arrow-left"></i>
          <input type='text' name='name' className='outline-none  border-none md:text-2xl w-28 md:w-40' defaultValue={"Run Workout"}/>

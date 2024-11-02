@@ -29,7 +29,7 @@ const MixedDrops = ({items}) => {
       <Droppable droppableId="mixed" direction="horizontal">
       {
           (provided)=>
-          <div className='w-full h-full flex justify-center gap-1 items-end' 
+          <div className='w-full h-full flex justify-center gap-1 place-items-end' 
           ref={provided.innerRef} {...provided.droppableProps}>
             {
               items.map((item, index)=> <BasicUnit item={item} index={index} key={index} sum={sum}/>)

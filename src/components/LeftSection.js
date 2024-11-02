@@ -16,7 +16,7 @@ const BasicUnit= ({item, index, setItems})=>{
          return new_items;
       })
    }
-   return <div className={`transition-all delay-300 w-[30%] h-16 rounded-lg`} onClick={addItem}>
+   return <div className={`transition-all delay-300 sm:w-[30%] w-[40%] m-2 sm:m-0 h-16 rounded-lg`} onClick={addItem}>
       <Draggable draggableId={item.id} index={index} key={index} > 
          {
             (provided, snapshot)=>{
@@ -45,7 +45,7 @@ const LeftSection = ({setItems}) => {
       <Droppable droppableId="basics" direction='horiztontal'>
          {
             (provided)=>(
-               <div className="sm:m-2 flex flex-wrap content-center justify-center md:gap-4 gap-1 min-h-40 sm:p-2" 
+               <div className="sm:m-2 h-fit flex flex-wrap content-center justify-center md:gap-4 gap-1 min-h-40 sm:p-2" 
                   {...provided.droppableProps}
                   ref={provided.innerRef}>
                   {

@@ -39,7 +39,7 @@ const Rootlayout = () => {
    }
   return (
     <div className='flex flex-col min-h-screen content-center bg-gray-200'>
-      <div className='text-cyan-500 bg-black text-2xl font-semibold py-4 px-2'>
+      <div className='text-cyan-500 bg-black text-2xl font-semibold p-2 sm:py-4 '>
          Workouts
       </div>
       <NavBar/>
