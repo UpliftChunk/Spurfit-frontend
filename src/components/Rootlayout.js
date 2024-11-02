@@ -1,6 +1,7 @@
 // import styled from 'styled-components';
 import LeftSection from './LeftSection.js';
 import MixedDrops from './MixedDrops.js';
+import NavBar from './NavBar.js';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { useState } from 'react';
 import { ITEMS } from "../tempData/Basics" 
@@ -37,13 +38,19 @@ const Rootlayout = () => {
       
    }
   return (
-    <div className='flex min-h-screen content-center border-2 border-b-amber-800'>
+    <div className='flex flex-col min-h-screen content-center border-2 border-b-amber-800'>
+      <div className='text-cyan-500 bg-black text-2xl font-semibold py-4 px-2'>
+         Workouts
+      </div>
+      <NavBar/>
       <DragDropContext onDragEnd={OnDragEndFunc}>
-         <div className='bg-purple-200 w-1/3'>
-            <LeftSection/>
-         </div>
-         <div className='flex-grow flex-col content-center justify-center gap-4 border-2 border-black '>
-            <MixedDrops items={items}/>
+         <div className='my-2 mx-1 md:mx-10 flex flex-wrap'>
+            <div className='bg-purple-200 md:w-1/3 w-full'>
+               <LeftSection setItems={setItems}/>
+            </div>
+            <div className='flex-grow flex-col content-center justify-center gap-4 border-2 border-black '>
+               <MixedDrops items={items}/>
+            </div>
          </div>
       </DragDropContext>
     </div>

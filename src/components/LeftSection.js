@@ -1,51 +1,60 @@
 import React from 'react'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
 import { ITEMS } from "../tempData/Basics" 
-
+import BarGraph from './BarGraph'
 // import styled from 'styled-components';
 // const Container = styled.div``;
 // const Task = styled.div``;
 
-const BasicUnit= ({item, index})=>{   
-   return <Draggable draggableId={item.id} index={index} key={index}>
-      {
-         (provided, snapshot)=>{
-            return <div 
-               {...provided.draggableProps} 
-               {...provided.dragHandleProps}
-               ref= {provided.innerRef}
-               className={`w-full h-full transition-all delay-300 ${snapshot.isDragging? " bg-red-200":"bg-red-100"}  `}
-               >
-               {item.name}
-            </div>
+const BasicUnit= ({item, index, setItems})=>{   
+   const addItem = ()=>{
+      setItems((prevItems)=>{
+         const new_items = Array.from(prevItems);
+         new_items.push(item);
+         console.log(new_items);
+         
+         return new_items;
+      })
+   }
+   return <div className={`transition-all delay-300 w-[30%] h-20`} onClick={addItem}>
+      <Draggable draggableId={item.id} index={index} key={index} > 
+         {
+            (provided, snapshot)=>{
+               return <div 
+                  {...provided.draggableProps} 
+                  {...provided.dragHandleProps}
+                  ref= {provided.innerRef}
+                  className= {`h-full ${snapshot.isDragging? " bg-red-200":"bg-red-100"} border border-black `}
+                  >
+                  <BarGraph units={item.units}/>
+               </div>
+            }
          }
-      }
-   </Draggable>
+      </Draggable>
+   </div>
 }
 
-const LeftSection = () => {
+const LeftSection = ({setItems}) => {
   
   return (
-    <div className='h-full flex flex-wrap content-center justify-center gap-4 '>
-      {
-         ITEMS.map((item, index)=>(
-            <div className="bg-blue-200 md:w-40 md:h-40 rounded border border-black" key={index}>
-               <Droppable droppableId={item.id +"#"+ index} className="p-2">
+    <div className='h-full flex flex-col'>
+      <div className="sm:m-2 flex flex-wrap content-center justify-center md:gap-4 gap-1"    >
+         Click or drag
+      </div>
+      <Droppable droppableId="basics" direction='horiztontal'>
+         {
+            (provided)=>(
+               <div className="sm:m-2 flex flex-wrap content-center justify-center md:gap-4 gap-1 min-h-40" 
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}>
                   {
-                     (provided)=>(
-                        <div className="m-2 h-[90%] border-2 border-black" 
-                           {...provided.droppableProps}
-                           ref={provided.innerRef}
-                        >
-                           <BasicUnit item={item} index={index}/>
-                         
-                        </div>
-                     )
+                     ITEMS.map((item, index)=> <BasicUnit item={item} index={index} key={index} setItems={setItems}/>)
                   }
-               </Droppable>
-            </div>
-         ))
-      }
+                  {provided.placeholder}
+               </div>
+            )
+         }
+      </Droppable>
     </div>
   )
 }
